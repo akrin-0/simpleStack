@@ -23,6 +23,15 @@ public:
         } );
     }
 
+    ~SimpleStack() {
+        while (length != 0) {
+            simpleLinkedList* prev_address = current_address->prev_address;
+            delete current_address;
+            current_address = prev_address;
+            --length;
+        }
+    }
+
     std::pair<bool, std::size_t> pushhh(T val) {
         auto* a = new simpleLinkedList;
         a->current_value = val;
